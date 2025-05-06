@@ -1,3 +1,5 @@
+import 'package:delivery_app/features/orders/pendingOrders/pending_order.dart';
+import 'package:delivery_app/features/orders/pickeduporders/screens/picked_up.dart';
 import 'package:flutter/material.dart';
 
 class OrderButtons extends StatelessWidget {
@@ -13,27 +15,69 @@ class OrderButtons extends StatelessWidget {
       child: Row(
         children: [
           _buildOrderButton(
-              Icons.inventory, "Pending\nOrders", screenWidth, screenHeight),
-          _buildOrderButton(Icons.local_shipping, "Picked Up\nOrders",
-              screenWidth, screenHeight),
-          _buildOrderButton(Icons.check_circle, "Completed\nOrders",
-              screenWidth, screenHeight),
-          _buildOrderButton(Icons.local_shipping, "Shipped\nOrders",
-              screenWidth, screenHeight),
+            context,
+            Icons.inventory,
+            "Pending\nOrders",
+            screenWidth,
+            screenHeight,
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PendingOrdersScreen()),
+            ),
+          ),
+          _buildOrderButton(
+            context,
+            Icons.local_shipping,
+            "Picked Up\nOrders",
+            screenWidth,
+            screenHeight,
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PickedUpOrdersScreen()),
+            ),
+          ),
+          _buildOrderButton(
+            context,
+            Icons.check_circle,
+            "Completed\nOrders",
+            screenWidth,
+            screenHeight,
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PickedUpOrdersScreen()),
+            ),
+          ),
+          _buildOrderButton(
+            context,
+            Icons.local_shipping,
+            "Shipped\nOrders",
+            screenWidth,
+            screenHeight,
+            () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PickedUpOrdersScreen()),
+            ),
+          ),
         ],
       ),
     );
   }
 
   Widget _buildOrderButton(
-      IconData icon, String label, double screenWidth, double screenHeight) {
+    BuildContext context,
+    IconData icon,
+    String label,
+    double screenWidth,
+    double screenHeight,
+    VoidCallback onPressed,
+  ) {
     final buttonWidth = screenWidth * 0.45;
     final buttonHeight = screenHeight * 0.15;
     final iconSize = screenWidth * 0.08;
     final fontSize = screenWidth * 0.04;
 
     return InkWell(
-      onTap: () {},
+      onTap: onPressed,
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,
       child: Container(
@@ -46,7 +90,9 @@ class OrderButtons extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: screenWidth * 0.05, vertical: screenHeight * 0.02),
+            horizontal: screenWidth * 0.05,
+            vertical: screenHeight * 0.02,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

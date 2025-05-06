@@ -41,11 +41,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.blue,
                     size: 30,
                   ),
-                  SizedBox(width: screenWidth * 0.04),
-                  const Text(
+                  SizedBox(width: screenWidth * 0.02),
+                  Text(
                     'ParivartanX Delivery',
                     style: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w500),
+                        color: Colors.black, fontWeight: FontWeight.w500 , fontSize: screenWidth * 0.04),
                   ),
                 ],
               ),
@@ -59,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     onPressed: () {},
                   ),
-                  // SizedBox(width: screenWidth * 0.01),
+                  SizedBox(width: screenWidth * 0.01),
                   IconButton(
                     icon: const Icon(
                       Icons.account_circle,

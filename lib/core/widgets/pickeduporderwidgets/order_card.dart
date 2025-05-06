@@ -2,6 +2,7 @@
 import 'package:delivery_app/core/widgets/pickeduporderwidgets/formatter.dart';
 import 'package:delivery_app/core/widgets/pickeduporderwidgets/order_detail_sheet.dart';
 import 'package:delivery_app/data/models/model.dart';
+import 'package:delivery_app/features/orders/orderdetails/order_detail2.dart';
 import 'package:flutter/material.dart';
 
 class OrderCard extends StatelessWidget {
@@ -9,10 +10,10 @@ class OrderCard extends StatelessWidget {
   final Function(String) onMarkAsDelivered;
 
   const OrderCard({
-    Key? key,
+    super.key,
     required this.order,
     required this.onMarkAsDelivered,
-  }) : super(key: key);
+  });
 
   void _navigateToMap(BuildContext context, String address) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -99,7 +100,13 @@ class OrderCard extends StatelessWidget {
                 const SizedBox(width: 8),
                 _buildActionButton(
                   label: 'Details',
-                  onTap: () => _showOrderDetails(context, order),
+                  onTap: () {
+                    Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const OrderDetailsWithoutId()),
+                        );
+                  },
                 ),
               ],
             ),

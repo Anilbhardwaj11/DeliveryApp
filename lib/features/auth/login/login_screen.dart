@@ -1,3 +1,4 @@
+import 'package:delivery_app/features/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class ParivartanXDeliveryLogin extends StatefulWidget {
@@ -105,7 +106,11 @@ class _ParivartanXDeliveryLoginState extends State<ParivartanXDeliveryLogin> {
                     width: double.infinity,
                     height: buttonHeight,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfileScreen()),);
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
